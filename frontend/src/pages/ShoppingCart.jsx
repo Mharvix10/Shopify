@@ -54,10 +54,12 @@ function ShoppingCart() {
 
     const placeOrder=async(name, contact)=>{
       try {
-        const number = contact
+        const number = contact.toString().slice(1)
+        const internationalNumber = '+234' + number
+        const parsedNumber = parseInt(internationalNumber)
+        console.log('parsed number: ', parsedNumber)
         const message = encodeURIComponent('I am interested in getting the ' + name)
-        const whatsappurl = `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`
-        window.open(whatsappurl, '_blank')
+        window.open(`https://wa.me/+${parsedNumber}?text=I am interested in buying ${name}`, '_blank', 'noopener, noreferrer')
       } catch (error) {
         console.log(error)
       }
