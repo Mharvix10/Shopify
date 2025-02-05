@@ -106,7 +106,7 @@ function Navbar() {
 
 
         <div className={`navMobileMenu ${showNav? 'show':'hidden'}`}>
-          <MdCancel size={30} onClick={()=>{setShowNav((prev)=> !prev)}}/>
+          <MdCancel size={50} onClick={()=>{setShowNav((prev)=> !prev)}}/>
 
           <ul>
             <NavLink className='mobileNavLink' to='/'><li ><FaHome size={20}/> Home</li></NavLink>
