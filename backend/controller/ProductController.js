@@ -95,7 +95,6 @@ const getSingleProduct=async(req,res)=>{
 const createProduct=async(req,res)=>{
     try {
         const email = req.query.email
-        const password = req.query.password
         const user = await Users.findOne({email})
 
         const {name, brand, price, description, location, category, imageUrl, contact} = req.body

@@ -37,7 +37,6 @@ function Store() {
 
 
     const deleteStoreItem=async(id)=>{
-      console.log(`delete id ${id}`)
       if(window.confirm('Are you sure you wanna delete this item from the cart')){
 
          try {

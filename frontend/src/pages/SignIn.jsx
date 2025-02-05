@@ -23,15 +23,20 @@ function SignIn() {
 
     const submitData=async(e)=>{
         e.preventDefault()
-        const response = await axios.post('https://haven-of-wisdom-server.onrender.com/api/login',{ email: email, password: password})
-        const status = response.data.message
-        const emailResp = response.data.email
-        const token = response.data.token
-        sessionStorage.setItem('email', emailResp)
-        localStorage.setItem('token', token )
-        if(status=='successful'){
-            navigate('/')
+        if(email && password){
+            const response = await axios.post('https://haven-of-wisdom-server.onrender.com/api/login',{ email: email, password: password})
+            const status = response.data.message
+            const emailResp = response.data.email
+            const token = response.data.token
+            sessionStorage.setItem('email', emailResp)
+            localStorage.setItem('token', token )
+            if(status=='successful'){
+                navigate('/')
+            }
+        }else{
+            window.alert('Please fill in the required details')
         }
+
     }
   return (
     <>

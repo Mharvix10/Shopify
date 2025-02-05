@@ -43,7 +43,6 @@ function AdminPage() {
             const response = await axios.get('https://haven-of-wisdom-server.onrender.com/api/event')
             const resp = response.data.event
             setEvent(resp)
-            console.log(resp)
         } catch (error) {
             console.log(error)
         }

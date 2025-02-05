@@ -26,12 +26,20 @@ function SignUp() {
     const submitData=async(e)=>{
         e.preventDefault()
         try {
-            const response = axios.post('https://haven-of-wisdom-server.onrender.com/api/register',{username: userName, email: email, password: password, confirmPassword: confirmPassword})
-            const status = response.data.message
-            const emailResp = response.data.email
-            sessionStorage.setItem('email', emailResp)
-            window.alert('User created successfully')
-            navigate('/')
+            if(password!==confirmPassword){
+                window.alert('Your password does not match')
+            }
+            else if(userName && email && password && confirmPassword){
+                const response = await axios.post('https://haven-of-wisdom-server.onrender.com/api/register',{username: userName, email: email, password: password, confirmPassword: confirmPassword})
+                const status = response.data.message
+                const emailResp = response.data.email
+                sessionStorage.setItem('email', emailResp)
+                window.alert('User created successfully')
+                navigate('/')
+            }else{
+                window.alert('Please fill in all the required information')
+            }
+
         } catch (error) {
             console.log(error)
         }

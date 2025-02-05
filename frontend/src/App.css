@@ -411,11 +411,11 @@ input{
     color: rgb(162, 45, 19);
 }
 .card img{
-    transition-duration: 1.0s;
+    transition-duration: 0.5s;
     transition-delay: 0ms;
 }
 .card img:hover{
-    opacity: 0.8;
+    opacity: 0.9;
     transform: scale(0.9);
 }
 .btn{
@@ -558,10 +558,10 @@ input{
         height: 350px;
     }
     .searchItem{
-        width: 200px;
+        width: 220px;
     }
     .logo{
-        width: 80px;
+        width: 60px;
     }
     .navIcon{
         display: none;

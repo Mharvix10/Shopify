@@ -39,7 +39,6 @@ function Categorypage() {
         navigate('/signin')
       } else {
         try {
-          console.log(`cart item id is ${id}`)
           const token = localStorage.getItem('token')
           await axios.post('https://haven-of-wisdom-server.onrender.com/api/cart', {item: id, user: email }, {
             headers: {

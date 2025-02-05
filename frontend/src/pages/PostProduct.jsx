@@ -6,7 +6,6 @@ import {toast} from 'react-toastify'
 function PostProduct() {
     const navigate = useNavigate()
     const [image, setImage] = useState(null);
-    const [password, setPassword] = useState('');
     const [form, setForm] = useState({
         name: '',
         brand: '',
@@ -41,50 +40,59 @@ function PostProduct() {
         formData.append('upload_preset', 'ecommerce');
         const email = sessionStorage.getItem('email');
         
-        if (!email) {
-            window.alert('Sign in required to post ads');
-            navigate('/signin')
-        } else {
+
             try {
-                console.log(form);
-                const response = await axios.post(
-                    `https://api.cloudinary.com/v1_1/dktallrwf/image/upload`, // Replace with your cloud name
-                    formData
-                );
-                const uploadedImageUrl = response.data.secure_url;
-                console.log('Upload successful:', uploadedImageUrl);
-
-                // Update the form state with the uploaded image URL
-                setForm((prev) => ({
-                    ...prev,
-                    imageUrl: uploadedImageUrl
-                }));
-
-                // Send the updated form state to your backend
-                console.log(form)
-
-                setTimeout(async()=>{
-                    await axios.post(`https://haven-of-wisdom-server.onrender.com/api/products?email=${email}&password=${password}`,
-                        {
-                            name: name,
-                            brand: brand,
-                            price: price,
-                            description: description,
-                            location: location,
-                            category: category,
-                            imageUrl: uploadedImageUrl,
-                            contact: contact
-                        }
+                if(!email) {
+                    window.alert('Sign in required to post ads');
+                    navigate('/signin')
+                }
+                else if(image==null){
+                    window.alert('Fill in all the required details. Image file not detected')
+                }
+                else if(name && brand && price && description && location && category && contact){
+                    const response = await axios.post(
+                        `https://api.cloudinary.com/v1_1/dktallrwf/image/upload`, // Replace with your cloud name
+                        formData
                     );
-                },2000)
+                    const uploadedImageUrl = response.data.secure_url;
+                    console.log('Upload successful:', uploadedImageUrl);
+    
+                    // Update the form state with the uploaded image URL
+                    setForm((prev) => ({
+                        ...prev,
+                        imageUrl: uploadedImageUrl
+                    }));
+    
+                    // Send the updated form state to your backend
+                    
+    
+                    setTimeout(async()=>{
+                        await axios.post(`https://haven-of-wisdom-server.onrender.com/api/products?email=${email}`,
+                            {
+                                name: name,
+                                brand: brand,
+                                price: price,
+                                description: description,
+                                location: location,
+                                category: category,
+                                imageUrl: uploadedImageUrl,
+                                contact: contact
+                            }
+                        );
+                    },2000)
+    
+                    window.alert('Product created successfully')
+                    navigate('/store')
+                }else{
+                    window.alert('Please fill all the required details')
+                }
 
-                window.alert('Product created susccessfully')
 
             } catch (error) {
                 console.error('Error uploading image:', error);
                 window.alert('An error occured with the upload')
             }
-        }
+        
     };
 
     return (
@@ -116,7 +124,6 @@ function PostProduct() {
                 <input className='adInput' type="text" name="description" id="description" value={description} onChange={onChange} placeholder='Enter the description of the product' /> <br />
                 <input className='adInput' type="text" name="location" id="location" value={location} onChange={onChange} placeholder='Enter the location of the product' /> <br />
                 <input className='adInput' type="text" name="contact" id="contact" value={contact} onChange={onChange} placeholder='Enter your contact number' /> <br />
-                <input className='adInput' type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' /> <br />
 
                 <button className='btn' onClick={upload}>Post Product</button>
             </div>

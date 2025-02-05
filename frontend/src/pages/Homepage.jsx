@@ -51,7 +51,6 @@ const productViewRef = useRef()
       navigate('/signin')
     } else {
       try {
-        console.log(`cart item id is ${id}`)
         const token = localStorage.getItem('token')
         const response = await axios.post('https://haven-of-wisdom-server.onrender.com/api/cart', {item: id, user: email }, {
           headers: {
@@ -155,7 +154,6 @@ const eventImage = (
       const response = await axios.get('https://haven-of-wisdom-server.onrender.com/api/event')
       const resp = response.data.event
       setEvent(resp)
-      console.log(resp)
     } catch (error) {
       console.log(error)
     }

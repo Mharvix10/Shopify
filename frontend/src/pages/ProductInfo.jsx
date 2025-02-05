@@ -30,7 +30,6 @@ function ProductInfo() {
             const response = await axios.get(`https://haven-of-wisdom-server.onrender.com/api/product/${id}`)
             const data = response.data.product
             setProducts(data)
-            console.log(products)
             setLoading(false)
         } catch (error) {
             console.log(error)
@@ -46,7 +45,6 @@ function ProductInfo() {
           navigate('/signin')
         } else {
           try {
-            console.log(`cart item id is ${id}`)
             const token = localStorage.getItem('token')
             await axios.post('https://haven-of-wisdom-server.onrender.com/api/cart', {item: id, user: email }, {
               headers: {
@@ -104,7 +102,6 @@ function ProductInfo() {
    
 
     useEffect(()=>{
-        console.log('running')
         fetchData()
     },[])
 

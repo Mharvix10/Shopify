@@ -13,7 +13,6 @@ function BrandContainer() {
         const result = await axios.get(`https://haven-of-wisdom-server.onrender.com/api/products/brand/${category}`)
         const brandList = result.data.brandItems
         setBrand(brandList)
-        console.log(brand)
     }
 
 
@@ -28,7 +27,6 @@ function BrandContainer() {
         toast.alert('Signing in is required to add item to cart')
     } else {
         try {
-        console.log(`cart item id is ${id}`)
         const token = localStorage.getItem('token')
         const response = await axios.post('https://haven-of-wisdom-server.onrender.com/api/cart', {item: id, user: email }, {
             headers: {
@@ -81,7 +79,6 @@ function BrandContainer() {
 
 
     useEffect(()=>{
-        console.log(category)
         fetchBrandName()
     },[])
   return (

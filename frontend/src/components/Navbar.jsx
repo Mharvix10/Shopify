@@ -114,7 +114,7 @@ function Navbar() {
             <NavLink className='mobileNavLink' to='/signup'><li> <IoPersonAddSharp size={20}/> Sign up</li></NavLink>
             <NavLink className='mobileNavLink' to='/profilePage'><li> <IoPersonCircle size={20}/> Profile</li></NavLink>
             <NavLink className='mobileNavLink' to='/cart'><li> <FaCartShopping size={20}/> Cart</li></NavLink>
-            <NavLink className='mobileNavLink' to='/postProduct'><li> <FaCloudUploadAlt size={20}/> Upload Ad</li></NavLink>
+            <NavLink className='mobileNavLink' to='/postProduct'><li> <FaCloudUploadAlt size={20}/> Upload Product</li></NavLink>
             <NavLink className='mobileNavLink' to='/store'><li> <FaStore size={20}/> My Store</li></NavLink>
 
           </ul>

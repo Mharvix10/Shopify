@@ -25,7 +25,6 @@ function ShoppingCart() {
         )
         const cartItems = response.data.cart
         setCart(cartItems)
-        console.log(`cart items: ${cart}`)
         setLoading(false)
       } catch (error) {
         console.log(error)
@@ -57,7 +56,6 @@ function ShoppingCart() {
       try {
         const number = contact
         const message = encodeURIComponent('I am interested in getting the ' + name)
-        console.log(`contact is ${number} and message is ${message}`)
         const whatsappurl = `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`
         window.open(whatsappurl, '_blank')
       } catch (error) {

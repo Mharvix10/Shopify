@@ -15,7 +15,6 @@ function Orderpage() {
         const response = await axios.get(`https://haven-of-wisdom-server.onrender.com/api/order?user=${user}`)
         const orderItems = response.data.cart
         setOrder(orderItems)
-        console.log(`order items: ${order}`)
         setLoading(false)
       } catch (error) {
         console.log(error)

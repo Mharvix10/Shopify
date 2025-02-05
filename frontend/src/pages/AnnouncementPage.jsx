@@ -56,9 +56,7 @@ function AnnouncementPage() {
         </div>
     )
 
-    useEffect(()=>{
-        console.log('Fetch the announcement data from the database')
-    }, [])
+
   return (
     <>
         <Navbar/>
