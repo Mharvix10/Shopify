@@ -92,7 +92,6 @@ h2{
     box-shadow: 0px 1px 3px;
 }
 .brandImageContainer{
-    background-image: url('./images/brandGif.gif');
     background-repeat: no-repeat;
     background-size: cover;
     height: 400px;
@@ -100,7 +99,6 @@ h2{
     margin-left: 20px;
 }
 .specialDealGif{
-    background-image: url('./images/specialdeal.gif');
     background-repeat: no-repeat;
     background-size: cover;
     height: 200px;
