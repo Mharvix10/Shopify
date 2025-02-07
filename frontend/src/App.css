@@ -88,8 +88,7 @@ h2{
 .landingContainer .navSection li{
     margin: 8px 20px;
     padding: 5px;
-    border-radius: 10px;
-    box-shadow: 0px 1px 3px;
+    box-shadow: 0px 1px 2px;
 }
 .brandImageContainer{
     background-repeat: no-repeat;
@@ -276,9 +275,8 @@ select{
     height: 350px;
     transition-duration: 0.3s;
     box-shadow: 0px 10px 20px grey;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 450;
-    line-height: 1.5;
 }
 .card:hover{
     opacity: 0.9;
@@ -615,6 +613,9 @@ input{
         height: 100%;
         box-shadow: 0px 3px 7px grey;
     }
+    .card header img{
+        height: 180px;
+    }
     .btn{
         width: 120px;
     }
@@ -674,6 +675,6 @@ input{
         width: 100%;
     }
     .productContainer{
-        height: 350px;
+        height: 300px;
     }
 }
