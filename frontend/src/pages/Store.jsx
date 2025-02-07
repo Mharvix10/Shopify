@@ -128,7 +128,7 @@ function Store() {
                 <h2>Search Result</h2>
             </header>
 
-            <div className='flexContainer'>
+            <div className='gridContainer4'>
                 {products.length===0? (<h1>No item found</h1>): storeProductView}
             </div>
         </div>

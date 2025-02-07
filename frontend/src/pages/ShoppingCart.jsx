@@ -111,27 +111,31 @@ function ShoppingCart() {
         </div>)
       }
   return (
-    <div>
+    <>
         <Navbar/>
-        <div className='margin1'>
-          {cart.length>0 && (<h2 className='textCenter'>CART ITEMS</h2>)}
+        <div className='marginX'>
+          <div className='margin1'>
+            {cart.length>0 && (<h2 className='textCenter'>CART ITEMS</h2>)}
+          </div>
+
+          <div className='gridContainer4'>
+              {cartItemVIew}
+          </div>
+
+          <div className='flexContainer'>
+            {cart.length===0 && (
+              <section className='p2'>
+                <h2>No Items found in the cart</h2>
+                <p className='mt1'>You are seeing this message because you have either not added an item to your cart or signed in.</p>
+            
+                <NavLink className='successColor' to='/signup'>Create an account instead</NavLink>
+                <NavLink className='successColor ml2' to='/signin'>Log In</NavLink>
+              </section>
+            )}
+          </div>
         </div>
-        <div className='flexContainer'>
-            {cartItemVIew}
-        </div>
-        <div className='flexContainer'>
-          
-          {cart.length===0 && (
-            <section className='p2'>
-              <h2>No Items found in the cart</h2>
-              <p className='mt1'>You are seeing this message because you have either not added an item to your cart or signed in.</p>
-          
-              <NavLink className='successColor' to='/signup'>Create an account instead</NavLink>
-              <NavLink className='successColor ml2' to='/signin'>Log In</NavLink>
-            </section>
-          )}
-        </div>
-    </div>
+        
+    </>
   )
 }
 

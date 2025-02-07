@@ -119,7 +119,7 @@ function Searchpage() {
                 <h2>Search Result</h2>
             </header>
 
-            <div className='flexContainer'>
+            <div className='gridContainer4'>
                 {products.length===0? (<h1>No item found</h1>): categoryProductView}
             </div>
         </div>

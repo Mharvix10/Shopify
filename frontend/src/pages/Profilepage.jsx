@@ -48,7 +48,7 @@ function Profilepage() {
   return (
     <>
         <Navbar/>
-        <div className='container'>
+        <div className='container grey'>
             <p>Username: {username} </p>
             <p>Email: {email}</p>
             <p>UserId: {_id}</p>

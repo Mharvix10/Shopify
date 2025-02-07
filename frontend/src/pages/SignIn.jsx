@@ -41,6 +41,7 @@ function SignIn() {
   return (
     <>
         <Navbar/>
+        <div className="container grey">
         <div className='header'>
             <h1>LOGIN</h1>
         </div>
@@ -52,6 +53,7 @@ function SignIn() {
         </div>
         <div className='container mt3'>
             Log in to your account to have full access or register if you don't have any account yet
+        </div>
         </div>
     </>
   )

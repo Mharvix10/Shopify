@@ -47,6 +47,7 @@ function SignUp() {
   return (
     <>
         <Navbar/>
+        <div className="container grey">
         <div className='header'>
             <h1>REGISTER</h1>
         </div>
@@ -56,6 +57,7 @@ function SignUp() {
             <input type="password" placeholder='Password' name='password' value={password} onChange={onChange} /> <br />
             <input type="password" placeholder='Confirm password' name='confirmPassword'value={confirmPassword} onChange={onChange} /> <br />
             <button className='btn' onClick={submitData}>Sign Up</button>
+        </div>
         </div>
     </>
   )

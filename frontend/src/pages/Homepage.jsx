@@ -7,6 +7,12 @@ import Spinner from '../images/spinnerNew.gif'
 import Footer from '../components/Footer'
 import {FaHome, FaShoppingCart} from 'react-icons/fa'
 import {toast} from 'react-toastify'
+import { Navigation, Pagination, Scrollbar, A11y, EffectCoverflow } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 function Homepage() {
   const navigate = useNavigate()
   const [event, setEvent] = useState([])
@@ -67,21 +73,23 @@ const productViewRef = useRef()
 
   const specialProductView = specialOffer.map((item)=>(
     
-        <div key={item._id} className='card'>
-            <header>
-            <img src={item.imageUrl} alt="" onClick={()=>{productDetails(item._id)}} />
-            <FaShoppingCart size={20} className='cartIcon' onClick={()=>{addCart(item._id)}}/>
-            </header>
-            <main>
-                <section>
-                    {item.name}
-                </section>
-                <section>
-                    N{item.price}
-                </section>
-            </main>
+      <SwiperSlide key={item._id}>
+          <div className='card'>
+              <header>
+              <img src={item.imageUrl} alt="" onClick={()=>{productDetails(item._id)}} />
+              <FaShoppingCart size={20} className='cartIcon' onClick={()=>{addCart(item._id)}}/>
+              </header>
+              <main>
+                  <section>
+                      {item.name}
+                  </section>
+                  <section>
+                      N{item.price}
+                  </section>
+              </main>
 
-        </div>
+          </div>
+      </SwiperSlide>
 
   ))
 
@@ -194,36 +202,60 @@ const eventImage = (
     <LandingContainer/>
 
 {/* container for uploading upcoming events */}
-{event.length==0? ' ': (
+{/* {event.length==0? ' ': (
   <div className=''>
     {eventImage}
   </div>
-)}
+)} */}
 
 {/* Below is the container for the special offer */}
     {/* <div className='specialDealGif'>
 
     </div> */}
+    <header className='header'>
+        <h2 className='designedHeading'>Special Deals</h2>
+    </header>
+    
     <div className='container'>
-        <header className='header'>
-            <h2>Special Deals</h2>
-        </header>
-
-        <div className='flexContainer'>
-            {specialProductView}
-        </div>
+        <Swiper
+          // install Swiper modules
+          className='productContainer'
+          modules={[Navigation, Pagination, A11y, EffectCoverflow]}
+          effect='coverflow'
+          spaceBetween={40}
+          draggable={true}
+          slidesPerView={4}
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          onSwiper={(swiper) => {}}
+          onSlideChange={() => {}}
+          breakpoints={{
+            320: { slidesPerView: 2 }, // 1 slide on small screens
+            640: { slidesPerView: 3 }, // 2 slides on medium screens
+            1024: { slidesPerView: 4 }, // 2 slides on larger screens
+          }}
+          coverflowEffect={{
+            rotate: 0, // Rotation angle
+            stretch: 0, // Space between slides
+            depth: 100, // Depth effect
+            modifier: 2.5, // Effect multiplier
+            slideShadows: false, // Enable shadows
+          }}
+        >
+          {specialProductView}
+        </Swiper>
     </div>
 
 
 
 {/* Below is the container for the regular products */}
-
-    <div ref={productViewRef} className='container'>
         <header className='header'>
-            <h2>Our Amazing Products</h2>
+            <h2 className='designedHeading'>Other Products</h2>
         </header>
 
-        <div className='flexContainer'>
+    <div ref={productViewRef} className='container'>
+
+        <div className='gridContainer4'>
             {regularProductView}
         </div>
 
