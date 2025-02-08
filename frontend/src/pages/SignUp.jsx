@@ -49,7 +49,7 @@ function SignUp() {
         <Navbar/>
         <div className="container grey">
         <div className='header'>
-            <h1>REGISTER</h1>
+            <h1 className='designedHeading'>REGISTER</h1>
         </div>
         <div>
             <input type="text" placeholder='Username' name='userName' value={userName} onChange={onChange} /> <br />

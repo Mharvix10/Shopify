@@ -43,7 +43,7 @@ function SignIn() {
         <Navbar/>
         <div className="container grey">
         <div className='header'>
-            <h1>LOGIN</h1>
+            <h1 className="designedHeading">LOGIN</h1>
         </div>
         <div>
             <input type="text" placeholder='Email' name='email' value={email} onChange={onChange}/> <br />
