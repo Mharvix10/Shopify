@@ -90,7 +90,7 @@ function BrandContainer() {
             products.length===0 ? (<></>):
             (
                 <div className='container'>
-                    <div className='flexContainer'>
+                    <div className='gridContainer4'>
                         {productViewDisplay}
                     </div>
             </div>
