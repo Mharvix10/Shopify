@@ -13,7 +13,7 @@ function Categorypage() {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const [totalPage, setTotalPage] = useState(1)
-
+    const [page, setPage] = useState(1)
     const productDetails=async(id)=>{
         navigate(`/productDetails/${id}`)
       }
@@ -79,7 +79,7 @@ function Categorypage() {
 
 
     // pagination function
-    const [page, setPage] = useState(1)
+
 
     const previousPage=async(e)=>{
         e.preventDefault()
@@ -102,7 +102,7 @@ function Categorypage() {
 
     useEffect(()=>{
         fetchCategoryProducts()
-    },[page])
+    },[page, category])
 
     if(loading){
         return (
