@@ -607,6 +607,9 @@ input{
 }
 
 @media screen and (max-width: 600px) {
+    .marginX{
+        margin: 0px 10px;
+    }
     .card{
         width: 100%;
         min-height: 200px;
