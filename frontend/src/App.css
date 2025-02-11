@@ -607,6 +607,10 @@ input{
 }
 
 @media screen and (max-width: 600px) {
+    .designedHeading{
+        margin: 10px 0px ;
+        font-size: 35px;
+    }
     .marginX{
         margin: 0px 10px;
     }
