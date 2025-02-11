@@ -17,6 +17,7 @@ function Homepage() {
   const navigate = useNavigate()
   const [event, setEvent] = useState([])
   const [page, setPage] = useState(1)  //pagination useState
+  const [totalPage, setTotalPage] = useState(1)
   const [specialOffer, setSpecialOffer] = useState([{}])
   const [product, setProduct] = useState([{}])
   const [loading, setLoading] = useState(true)
@@ -31,6 +32,7 @@ const productViewRef = useRef()
       const response = await axios.get(`https://haven-of-wisdom-server.onrender.com/api/products?page=${page}`)
       const products = response.data.product
       setProduct(products)
+      setTotalPage(response.data.totalPage)
       setLoading(false)
     } catch (error) {
       console.log(error)
@@ -148,13 +150,14 @@ const eventImage = (
 
   }
 
-  const nextPage=async(e)=>{
-    e.preventDefault()
-    setScroll(true)
-    setPage((prev)=>prev + 1)
-    
-
-  }
+  const nextPage = async (e) => {
+    e.preventDefault();
+    if (page < totalPage) {
+      setScroll(true);
+      setPage((prev) => prev + 1);
+    }
+  };
+  
 
 
   const fetchEvent =async()=>{
@@ -170,6 +173,7 @@ const eventImage = (
 
 
   useEffect(()=>{
+    console.log(`total page is ${totalPage}`)
     fetchSpecialProducts()
     fetchProducts()
     fetchEvent()
@@ -266,7 +270,7 @@ const eventImage = (
     <div className='pageContainer'>
           <button className='pageBtn' onClick={previousPage}>Previous page</button> 
           <span className='pageTxt'>{page}</span> 
-          <button className='pageBtn' onClick={nextPage}>Next page</button>
+          <button disabled={page>=totalPage} className='pageBtn' onClick={nextPage}>Next page</button>
     </div>
 
 

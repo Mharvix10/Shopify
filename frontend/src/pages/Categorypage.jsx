@@ -12,7 +12,7 @@ function Categorypage() {
     const category = params.category
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
-
+    const [totalPage, setTotalPage] = useState(1)
 
     const productDetails=async(id)=>{
         navigate(`/productDetails/${id}`)
@@ -24,6 +24,7 @@ function Categorypage() {
         const result = await axios.get(`https://haven-of-wisdom-server.onrender.com/api/products/${category}?page=${page}`)
         const products = result.data.product
         setProducts(products)
+        setTotalPage(result.data.totalPage)
         setLoading(false)
       } catch (error) {
         console.log(error)
@@ -90,11 +91,13 @@ function Categorypage() {
     
       }
     
-      const nextPage=async(e)=>{
-        e.preventDefault()
-        setPage((prev)=>prev + 1)
-    
-      }
+      const nextPage = async (e) => {
+        e.preventDefault();
+        if (page < totalPage) {
+          setPage((prev) => prev + 1);
+        }
+      };
+      
       // pagination function ends here
 
     useEffect(()=>{
@@ -129,7 +132,7 @@ function Categorypage() {
         <div className='pageContainer'>
             <button className='pageBtn' onClick={previousPage}>Previous page</button> 
             <span className='pageTxt'>{page}</span> 
-            <button className='pageBtn' onClick={nextPage}>Next page</button>
+            <button disabled={page>=totalPage} className='pageBtn' onClick={nextPage}>Next page</button>
         </div>
 
 

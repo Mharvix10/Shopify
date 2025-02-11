@@ -25,7 +25,7 @@ const getProduct=async(req,res)=>{
             if(product.length==0){
                 console.log('No products can be found')
             }else{
-                res.json({product: product, page: roundedPage})
+                res.json({product: product, totalPage: roundedPage})
             }
             
 
@@ -44,7 +44,7 @@ const getCategoryProduct=async(req,res)=>{
     const page = parseInt(req.query.page) || 1
     const skip = (page-1) * pageSize
     const totalNoOfProducts = await Products.countDocuments()
-    const totalPage = totalNoOfProducts / pageSize
+    const totalPage = Math.ceil(totalNoOfProducts / pageSize)
         try {
             console.log(`params is ${category}`)
             const product = await Products.find({category}).select('name price location imageUrl').skip(skip).limit(pageSize).exec()
@@ -167,7 +167,7 @@ const getStoreProducts=async(req, res)=>{
     const page = parseInt(req.query.page) || 1
     const skip = (page-1) * pageSize
     const totalNoOfProducts = await Products.countDocuments()
-    const totalPage = totalNoOfProducts / pageSize
+    const totalPage = Math.ceil(totalNoOfProducts / pageSize)
         try {
             console.log(`store email ${email}`)
             const user = await Users.findOne({email}).select('_id')
