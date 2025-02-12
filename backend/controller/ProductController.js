@@ -43,7 +43,7 @@ const getCategoryProduct=async(req,res)=>{
     const pageSize = 5
     const page = parseInt(req.query.page) || 1
     const skip = (page-1) * pageSize
-    const totalNoOfProducts = await Products.countDocuments()
+    const totalNoOfProducts = await Products.countDocuments({category: category})
     const totalPage = Math.ceil(totalNoOfProducts / pageSize)
         try {
             console.log(`params is ${category}`)
