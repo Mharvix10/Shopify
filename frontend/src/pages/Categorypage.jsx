@@ -119,7 +119,7 @@ function Categorypage() {
 
         <div className='container'>
             <header className='header'>
-                <h2>Search Result</h2>
+                <h2 className='designedHeading'>Products</h2>
             </header>
 
             <div className='gridContainer4'>
